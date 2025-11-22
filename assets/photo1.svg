@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="City skyline sample">
+  <defs>
+    <linearGradient id="p1" x1="0" x2="1">
+      <stop offset="0" stop-color="#071029"/>
+      <stop offset="1" stop-color="#0ea5a4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#p1)"/>
+  <g fill="rgba(255,255,255,0.12)">
+    <rect x="60" y="300" width="80" height="200" rx="6"/>
+    <rect x="160" y="240" width="120" height="260" rx="6"/>
+    <rect x="300" y="180" width="180" height="320" rx="6"/>
+    <rect x="520" y="260" width="140" height="240" rx="6"/>
+    <rect x="700" y="220" width="200" height="280" rx="6"/>
+    <rect x="960" y="280" width="120" height="220" rx="6"/>
+  </g>
+</svg>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app_updated3.css">
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main">
+        <div class="nav-left">
+            <a class="brand" href="/" aria-label="Serene home">
+                <!-- Temporary Serene logo: rounded mark with gradient and letter S -->
+                <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sereneGrad" x1="0" x2="1">
+                            <stop offset="0" stop-color="#071029" />
+                            <stop offset="1" stop-color="#0ea5a4" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="36" height="36" rx="8" fill="url(#sereneGrad)" />
+                    <text x="50%" y="55%" text-anchor="middle" fill="#e6fbfb"
+                        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" font-size="16"
+                        font-weight="700">S</text>
+                </svg>
+                <span class="brand-name">Serene</span>
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <div class="search" role="search">
+                <label for="global-search" class="visually-hidden">Search posts, people, topics</label>
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 21l-4.35-4.35" stroke="#6b7280" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="11" cy="11" r="6" stroke="#6b7280" stroke-width="2" fill="none" />
+                </svg>
+                <input id="global-search" type="search" placeholder="Search" autocomplete="off"
+                    aria-autocomplete="both" />
+                <div class="search-suggestions" role="listbox" hidden>
+                    <div role="option">Profiles</div>
+                    <div role="option">Hashtags</div>
+                    <div role="option">Places</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-actions" role="menubar" aria-label="Primary">
+                <li role="none">
+                    <button class="icon-btn" aria-label="Home" title="Home">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10.5z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </li>
+
+                <li role="none">
+                    <button class="icon-btn" aria-label="Explore" title="Explore">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2l3.5 7.5L23 11l-6 4 2 8L12 18 5 23l2-8-6-4 7.5-1.5L12 2z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </li>
+
+                <li role="none">
+                    <button class="icon-btn" aria-label="Reels" title="Reels">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" fill="none" />
+                            <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+                        </svg>
+                    </button>
+                </li>
+
+                <li role="none">
+                    <button class="icon-btn" aria-label="Messages" title="Messages">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                fill="currentColor" />
+                        </svg>
+                        <span class="badge" aria-hidden="true">3</span>
+                    </button>
+                </li>
+
+                <li role="none">
+                    <button class="icon-btn" aria-label="Create" title="Create post">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" fill="none" />
+                            <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </li>
+
+                <li role="none">
+                    <button class="icon-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22z" fill="currentColor" />
+                            <path d="M18 16V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2z" fill="currentColor" />
+                        </svg>
+                        <span class="badge" aria-hidden="true">7</span>
+                    </button>
+                </li>
+
+                <li class="profile" role="none">
+                    <button class="profile-btn" aria-haspopup="true" aria-expanded="false" title="Profile">
+                        <span class="story-ring" aria-hidden="true"></span>
+                        <img class="avatar" src="assets/avatar.svg" alt="Your profile" />
+                    </button>
+
+                    <div class="profile-menu" role="menu" aria-label="Profile menu" hidden>
+                        <a role="menuitem" href="/profile">Profile</a>
+                        <a role="menuitem" href="/saved">Saved</a>
+                        <a role="menuitem" href="/settings">Settings</a>
+                        <button role="menuitem" class="logout">Log out</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <details class="mobile-menu">
+            <summary class="hamburger" aria-label="Open menu" role="button">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </summary>
+
+            <div class="mobile-panel" id="mobile-menu" role="menu" aria-label="Mobile primary menu">
+                <ul class="nav-actions mobile-nav" role="menubar" aria-label="Primary">
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Home" title="Home">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10.5z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span>Home</span>
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Explore" title="Explore">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3.5 7.5L23 11l-6 4 2 8L12 18 5 23l2-8-6-4 7.5-1.5L12 2z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span>Explore</span>
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Reels" title="Reels">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" fill="none" />
+                                <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+                            </svg>
+                            <span>Reels</span>
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Messages" title="Messages">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span>Messages</span>
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Create" title="Create post">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" fill="none" />
+                                <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <span>Create</span>
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button class="icon-btn" aria-label="Notifications" title="Notifications">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22z" fill="currentColor" />
+                                <path d="M18 16V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2z" fill="currentColor" />
+                            </svg>
+                            <span>Notifications</span>
+                        </button>
+                    </li>
+
+                    <li class="profile" role="none">
+                        <button class="profile-btn" aria-haspopup="true" aria-expanded="false" title="Profile">
+                            <span class="story-ring" aria-hidden="true"></span>
+                            <img class="avatar" src="assets/avatar.svg" alt="Your profile" />
+                        </button>
+                    </li>
+                </ul>
+                <div class="profile-area">
+                    <div class="profile-menu" role="menu" aria-label="Profile menu">
+                        <a role="menuitem" href="/profile">Profile</a>
+                        <a role="menuitem" href="/saved">Saved</a>
+                        <a role="menuitem" href="/settings">Settings</a>
+                        <button role="menuitem" class="logout">Log out</button>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </nav>
+    <main class="container main-content" role="main">
+        <form class="composer" action="#" method="post" aria-label="Create post">
+            <div class="compose-row">
+                <img class="compose-avatar avatar" src="assets/avatar-alex.svg" alt="Your avatar" />
+                <div style="flex:1">
+                    <label for="new-post" class="visually-hidden">Write a post</label>
+                    <textarea id="new-post" name="content" placeholder="What's happening?" required></textarea>
+                    <div class="compose-actions">
+                        <div class="file">
+                            <label for="file-upload">Attach image</label>
+                            <input id="file-upload" type="file" name="image" accept="image/*" />
+                        </div>
+                        <button type="submit" class="submit">Post</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <section class="feed" aria-label="Main feed">
+            <article class="post" aria-labelledby="post-1-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-alex.svg" alt="Alex" />
+                    <div>
+                        <div class="author">Alex Morgan <span class="meta">@alex</span></div>
+                        <div class="meta"><time datetime="2025-11-21">Nov 21</time> · <span>New York</span></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-1-title">
+                    Morning run done 🏃‍♂️ — 6.2 miles, felt strong. Coffee and code now. #morningroutine #100DaysOfCode
+                </div>
+
+                <div class="post-image landscape"><img src="assets/jennifer-marquez-nfQEC_kX6OQ-unsplash.jpg"
+                        alt="Person running at sunrise" loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.35-9-7.05C0 10.9 3 7 7 7c2.1 0 3.1 1.1 5 3 1.9-1.9 2.9-3 5-3 4 0 7 3.9 4 6.95C19 16.65 12 21 12 21z" />
+                        </svg> Like</button>
+                    <button class="action" aria-label="Comment"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg> Comment</button>
+                    <button class="action" aria-label="Save"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M6 2h9l5 5v13l-8-3-8 3V2z" />
+                        </svg> Save</button>
+                </div>
+            </article>
+
+            <article class="post" aria-labelledby="post-2-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-rina.svg" alt="Rina" />
+                    <div>
+                        <div class="author">Rina Lee <span class="meta">@rinalee</span></div>
+                        <div class="meta"><time datetime="2025-11-20">Nov 20</time></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-2-title">
+                    Sunset from the rooftop tonight — colors were unreal. Slight edit in Lightroom. Anyone got recs for
+                    low-light lenses? #photography #sunset
+                </div>
+
+                <div class="post-image landscape"><img src="assets/amin-ramezani-kZOOBX0Cxkg-unsplash.jpg"
+                        alt="City skyline at sunset" loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like">❤ 24</button>
+                    <button class="action" aria-label="Comment">💬 6</button>
+                    <button class="action" aria-label="Share">↗</button>
+                </div>
+
+                <div class="post-footer">12 comments · 3 shares</div>
+            </article>
+
+            <article class="post" aria-labelledby="post-3-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-sam.svg" alt="Sam" />
+                    <div>
+                        <div class="author">Sam Ortiz <span class="meta">@sam</span></div>
+                        <div class="meta"><time datetime="2025-11-19">Nov 19</time></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-3-title">
+                    Portrait session from yesterday — soft window light, candid takes. Loved how the subject relaxed
+                    after a few minutes. #portrait #film
+                </div>
+
+                <div class="post-image portrait"><img src="assets/ernest-brillo-2MdAST7DiRA-unsplash.jpg"
+                        alt="Portrait in a coffee shop with soft window light" loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.35-9-7.05C0 10.9 3 7 7 7c2.1 0 3.1 1.1 5 3 1.9-1.9 2.9-3 5-3 4 0 7 3.9 4 6.95C19 16.65 12 21 12 21z" />
+                        </svg></button>
+                    <button class="action" aria-label="Comment"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></button>
+                    <button class="action" aria-label="Save"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M6 2h9l5 5v13l-8-3-8 3V2z" />
+                        </svg></button>
+                </div>
+            </article>
+
+            <article class="post" aria-labelledby="post-4-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-maya.svg" alt="Maya" />
+                    <div>
+                        <div class="author">Maya Patel <span class="meta">@maya</span></div>
+                        <div class="meta"><time datetime="2025-11-18">Nov 18</time></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-4-title">
+                    Sketching character concepts for a short comic — playing with bold palettes and loose silhouettes.
+                    Swipe for details. #illustration #indiecomics
+                </div>
+
+                <div class="post-image square"><img src="assets/premium_photo-1668485968660-67a0f563d59a.avif"
+                        alt="Colorful illustration composition" loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.35-9-7.05C0 10.9 3 7 7 7c2.1 0 3.1 1.1 5 3 1.9-1.9 2.9-3 5-3 4 0 7 3.9 4 6.95C19 16.65 12 21 12 21z" />
+                        </svg></button>
+                    <button class="action" aria-label="Comment"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></button>
+                    <button class="action" aria-label="Save"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M6 2h9l5 5v13l-8-3-8 3V2z" />
+                        </svg></button>
+                </div>
+            </article>
+
+            <article class="post" aria-labelledby="post-5-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-liu.svg" alt="Liu" />
+                    <div>
+                        <div class="author">Liu Wang <span class="meta">@liuw</span></div>
+                        <div class="meta"><time datetime="2025-11-17">Nov 17</time></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-5-title">
+                    Recap from the accessibility workshop — great turnout and practical fixes we shipped today. Slides
+                    linked in comments. ♿️ #a11y
+                </div>
+
+                <div class="post-image landscape"><img src="assets/photo2.svg" alt="Audience at a workshop, stylized"
+                        loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.35-9-7.05C0 10.9 3 7 7 7c2.1 0 3.1 1.1 5 3 1.9-1.9 2.9-3 5-3 4 0 7 3.9 4 6.95C19 16.65 12 21 12 21z" />
+                        </svg></button>
+                    <button class="action" aria-label="Comment"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></button>
+                    <button class="action" aria-label="Save"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M6 2h9l5 5v13l-8-3-8 3V2z" />
+                        </svg></button>
+                </div>
+            </article>
+
+            <article class="post" aria-labelledby="post-6-title">
+                <header class="post-header">
+                    <img class="avatar" src="assets/avatar-nora.svg" alt="Nora" />
+                    <div>
+                        <div class="author">Nora <span class="meta">@nora</span></div>
+                        <div class="meta"><time datetime="2025-11-16">Nov 16</time></div>
+                    </div>
+                </header>
+
+                <div class="post-content" id="post-6-title">
+                    Booked a quiet weekend getaway — any recs for cabins near Seattle with good coffee and trails? ☕️🌲
+                    #travel
+                </div>
+                <div class="post-image landscape"><img src="assets/shimo-yann-NXji1lLGQB8-unsplash.jpg"
+                        alt="Forest trail with cabin" loading="lazy" decoding="async" /></div>
+
+                <div class="post-actions">
+                    <button class="action" aria-label="Like"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.35-9-7.05C0 10.9 3 7 7 7c2.1 0 3.1 1.1 5 3 1.9-1.9 2.9-3 5-3 4 0 7 3.9 4 6.95C19 16.65 12 21 12 21z" />
+                        </svg></button>
+                    <button class="action" aria-label="Comment"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></button>
+                    <button class="action" aria-label="Save"><svg viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M6 2h9l5 5v13l-8-3-8 3V2z" />
+                        </svg></button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <script defer src="scripts/image-orient.js"></script>
+    <script defer src="scripts/scroll-anim.js"></script>
+</body>
+
+</html>

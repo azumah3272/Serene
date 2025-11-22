@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Rooftop sunset with city skyline">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#ff9a9e"/>
+      <stop offset="0.5" stop-color="#fad0c4"/>
+      <stop offset="1" stop-color="#fbc2eb"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#2b5876"/>
+      <stop offset="1" stop-color="#4e4376"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g1)"/>
+  <!-- stylized skyline -->
+  <g transform="translate(0,300)">
+    <rect x="40" y="160" width="160" height="120" rx="6" fill="#2c3e50" opacity="0.9"/>
+    <rect x="220" y="100" width="120" height="180" rx="6" fill="#34495e"/>
+    <rect x="360" y="140" width="200" height="140" rx="6" fill="#22313f"/>
+    <rect x="580" y="80" width="220" height="200" rx="6" fill="#2b3440"/>
+    <rect x="820" y="120" width="140" height="160" rx="6" fill="#1f2a36"/>
+    <rect x="980" y="160" width="120" height="120" rx="6" fill="#26323b"/>
+  </g>
+  <!-- rooftop silhouette and window glows -->
+  <g transform="translate(0,300)" opacity="0.9">
+    <rect x="420" y="220" width="240" height="40" fill="#111" rx="4"/>
+    <circle cx="900" cy="180" r="60" fill="rgba(255,255,255,0.06)"/>
+  </g>
+  <!-- soft vignette -->
+  <rect width="1200" height="800" fill="url(#g2)" opacity="0.06"/>
+  <!-- caption area hint -->
+  <rect x="0" y="640" width="1200" height="160" fill="#000" opacity="0.03"/>
+</svg>

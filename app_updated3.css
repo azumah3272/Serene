@@ -1,0 +1,1635 @@
+:root {
+	--bg: #0b1220;
+	/* page bg: deep midnight */
+	--nav-bg-1: #071029;
+	/* dark navy */
+	--nav-bg-2: #0ea5a4;
+	/* teal accent */
+	--muted: #94a3b8;
+	--glass: rgba(255, 255, 255, 0.04);
+	--glass-border: rgba(255, 255, 255, 0.06);
+	--accent: #e6fbfb;
+	/* light accent for text on dark */
+}
+
+* {
+	box-sizing: border-box
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	background: var(--bg);
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color: var(--accent)
+}
+
+/* Prevent horizontal overflow on narrow viewports and ensure flex children can shrink */
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+/* Ensure navbar and its flex children don't force overflow */
+.navbar {
+	box-sizing: border-box;
+	width: 100%
+}
+
+.nav-left,
+.nav-center,
+.nav-right,
+.brand,
+.search,
+.nav-actions {
+	min-width: 0
+}
+
+.nav-center {
+	flex: 1 1 auto;
+	justify-content: center
+}
+
+.search {
+	flex: 0 1 360px;
+	min-width: 0
+}
+
+.nav-actions {
+	flex-shrink: 1;
+	display: flex;
+	align-items: center;
+	gap: .35rem
+}
+
+.icon-btn,
+.profile-btn,
+.hamburger {
+	min-width: 0
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.5rem 1rem;
+	background: linear-gradient(90deg, var(--nav-bg-1), var(--nav-bg-2));
+	color: #fff;
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+	display: flex;
+	align-items: center
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	color: inherit;
+	text-decoration: none
+}
+
+.brand svg {
+	border-radius: 6px;
+	box-shadow: 0 4px 16px rgba(2, 6, 23, 0.5)
+}
+
+.brand-name {
+	font-weight: 700;
+	font-size: 1rem;
+	letter-spacing: 0.6px
+}
+
+.search {
+	position: relative;
+	min-width: 220px;
+	width: 360px;
+	max-width: 65vw
+}
+
+.search-icon {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none
+}
+
+.search input[type=search] {
+	width: 100%;
+	padding: 8px 12px 8px 34px;
+	border-radius: 999px;
+	border: 1px solid transparent;
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--accent);
+	outline: none;
+	transition: box-shadow .15s, background .15s, backdrop-filter .15s;
+	backdrop-filter: blur(6px) saturate(120%);
+}
+
+.search input::placeholder {
+	color: rgba(230, 251, 251, 0.45)
+}
+
+.search input:focus {
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--accent);
+	box-shadow: 0 8px 28px rgba(2, 6, 23, 0.45);
+}
+
+.search-suggestions {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: calc(100% + 8px);
+	background: #fff;
+	border-radius: 12px;
+	padding: 8px 6px;
+	color: var(--accent);
+	box-shadow: 0 8px 30px rgba(2, 6, 23, 0.12);
+}
+
+.search-suggestions[hidden] {
+	display: none
+}
+
+.search-suggestions [role="option"] {
+	padding: 8px 12px;
+	border-radius: 8px
+}
+
+.search-suggestions [role="option"]:hover {
+	background: #f3f4f6
+}
+
+.nav-actions {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: .4rem;
+	align-items: center
+}
+
+.icon-btn {
+	background: transparent;
+	border: 0;
+	padding: .45rem .55rem;
+	border-radius: 10px;
+	color: inherit;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative
+}
+
+.icon-btn:focus {
+	outline: 2px solid rgba(255, 255, 255, 0.12);
+	outline-offset: 2px
+}
+
+.badge {
+	position: absolute;
+	top: 4px;
+	right: 6px;
+	background: #ff3b30;
+	color: #fff;
+	border-radius: 999px;
+	font-size: 11px;
+	padding: 2px 6px;
+	line-height: 1;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+}
+
+.profile {
+	position: relative
+}
+
+.profile-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	padding: .15rem .3rem;
+	border-radius: 999px;
+	cursor: pointer
+}
+
+.profile-btn:focus {
+	outline: 3px solid rgba(255, 255, 255, 0.12)
+}
+
+.story-ring {
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	display: inline-block;
+	margin-right: -44px;
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06) inset;
+	background: conic-gradient(from 120deg, var(--nav-bg-1), var(--nav-bg-2));
+}
+
+.avatar {
+	width: 36px;
+	height: 36px;
+	border-radius: 999px;
+	border: 2px solid #fff;
+	display: inline-block;
+	object-fit: cover
+}
+
+.profile-menu {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 8px);
+	background: #fff;
+	color: var(--accent);
+	min-width: 160px;
+	border-radius: 12px;
+	padding: 8px 0;
+	box-shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
+	border: 1px solid rgba(15, 23, 42, 0.04)
+}
+
+.profile-menu a,
+.profile-menu button {
+	display: block;
+	padding: 10px 14px;
+	text-decoration: none;
+	color: inherit;
+	background: transparent;
+	border: 0;
+	text-align: left;
+	width: 100%;
+	cursor: pointer
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover {
+	background: #f3f4f6
+}
+
+.profile-menu[hidden] {
+	display: none
+}
+
+.hamburger {
+	display: none;
+	background: transparent;
+	border: 0;
+	padding: .35rem;
+	border-radius: 8px;
+	color: inherit
+}
+
+.hamburger-line {
+	display: block;
+	width: 20px;
+	height: 2px;
+	background: rgba(255, 255, 255, 0.9);
+	margin: 3px 0;
+	border-radius: 2px
+}
+
+@media (max-width:900px) {
+	.search {
+		display: none
+	}
+
+	.brand-name {
+		display: none
+	}
+
+	.hamburger {
+		display: inline-flex
+	}
+
+	.nav-right {
+		gap: .2rem
+	}
+}
+
+/* Mobile menu panel styling (details/summary) */
+.mobile-menu {
+	display: none
+}
+
+@media (max-width:420px) {
+
+	/* hide desktop nav actions and show mobile menu */
+	.nav-actions {
+		display: none
+	}
+
+	.mobile-menu {
+		display: block
+	}
+
+	/* Bottom-sheet style mobile panel: keeps summary/hamburger tappable above panel */
+	.mobile-panel {
+		position: fixed;
+		left: 8px;
+		right: 8px;
+		bottom: 12px;
+		max-height: 82vh;
+		background: linear-gradient(180deg, rgba(6, 10, 18, 0.98), rgba(8, 14, 24, 0.96));
+		color: var(--accent);
+		padding: 14px;
+		border-radius: 12px 12px 8px 8px;
+		overflow: auto;
+		z-index: 60;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6)
+	}
+
+	/* summary (hamburger) should remain tappable above the panel so clicking it closes the menu */
+	.mobile-menu summary.hamburger {
+		position: relative;
+		z-index: 70
+	}
+
+	/* Top area: compact grid of primary actions */
+	.mobile-panel .nav-actions {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+		margin-bottom: 12px
+	}
+
+	.mobile-panel .nav-actions .icon-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		border-radius: 10px;
+		background: transparent
+	}
+
+	.mobile-panel .nav-actions .icon-btn svg {
+		margin-bottom: 6px
+	}
+
+	.mobile-panel .nav-actions .icon-btn span {
+		display: block;
+		font-size: 13px
+	}
+
+	/* Secondary area: profile + menu links */
+	.mobile-panel .profile-area {
+		border-top: 1px solid rgba(255, 255, 255, 0.03);
+		padding-top: 10px;
+		margin-top: 6px
+	}
+
+	.mobile-panel .profile-area .profile-menu {
+		background: transparent;
+		color: var(--muted-2);
+		box-shadow: none;
+		padding: 0
+	}
+
+	.mobile-panel .profile-area .profile-menu a,
+	.mobile-panel .profile-area .profile-menu button {
+		color: var(--accent);
+		padding: 10px 8px;
+		border-radius: 8px
+	}
+
+	/* animate the panel gently when details opens */
+	.mobile-menu[open] .mobile-panel {
+		animation: menu-fade-up .26s cubic-bezier(.2, .9, .2, 1) both
+	}
+}
+
+/* enable scroll-snap on smaller viewports so feed feels like discrete panels */
+@media (max-width:900px) {
+	.feed {
+		scroll-snap-type: y proximity
+	}
+
+	.feed .post {
+		scroll-snap-align: start
+	}
+}
+
+@media (prefers-color-scheme:light) {
+	:root {
+		--bg: #fff
+	}
+}
+
+@media (prefers-reduced-motion:reduce) {
+	* {
+		transition: none !important
+	}
+}
+
+/* Animations & lively interactions */
+:root {
+	--motion-fast: 120ms;
+	--motion-medium: 220ms;
+	--motion-slow: 420ms;
+	--nav-anim-duration: 8s;
+	--nav-subtle-duration: 380ms;
+}
+
+/* Layout & tokens for feed and posts */
+:root {
+	--container-max: 1100px;
+	--space-1: 8px;
+	--space-2: 12px;
+	--space-3: 16px;
+	--space-4: 24px;
+	--radius: 12px;
+	--card-bg: rgba(255, 255, 255, 0.03);
+	--card-contrast: rgba(255, 255, 255, 0.04);
+	--muted-2: rgba(230, 251, 251, 0.35);
+}
+
+.container {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 0 var(--space-4)
+}
+
+.main-content {
+	padding: var(--space-4) 0
+}
+
+.feed {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-4)
+}
+
+@media (min-width:900px) {
+	.feed {
+		grid-template-columns: repeat(2, 1fr)
+	}
+}
+
+@media (min-width:1200px) {
+	.feed {
+		grid-template-columns: repeat(3, 1fr)
+	}
+}
+
+/* Force a vertical, single-column feed on larger screens so desktop scrolling matches mobile.
+   Center posts and enable scroll-snap so users get a consistent vertical reading experience. */
+@media (min-width:900px) {
+
+	/* Instagram-like narrow feed on larger screens for focused vertical browsing */
+	.feed {
+		grid-template-columns: 1fr;
+		max-width: 640px;
+		margin: 0 auto;
+		scroll-snap-type: y proximity;
+		gap: 12px
+	}
+
+	.feed .post {
+		max-width: 600px;
+		margin: 0 auto;
+		scroll-snap-align: start
+	}
+}
+
+@media (min-width:1200px) {
+	.feed {
+		max-width: 720px
+	}
+
+	.feed .post {
+		max-width: 680px
+	}
+}
+
+/* TikTok-style desktop view: large vertical reels centered with overlay actions */
+@media (min-width:1000px) {
+
+	/* make feed occupy viewport width to center big reels */
+	.feed {
+		display: block;
+		max-width: 100vw;
+		padding: 0;
+		gap: 0;
+		scroll-snap-type: y mandatory
+	}
+
+	/* each post becomes a full, centered reel container */
+	.feed .post {
+		max-width: 720px;
+		margin: 30px auto;
+		display: block;
+		padding: 0;
+		border-radius: 12px;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		position: relative
+	}
+
+	/* large vertical media (reel) */
+	.post-image {
+		aspect-ratio: 9/16;
+		max-height: calc(100vh - 140px);
+		margin: 0 auto;
+		border-radius: 12px;
+		overflow: hidden
+	}
+
+	.post-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 12px 12px 0 0
+	}
+
+	/* center snap to each post */
+	.feed .post {
+		scroll-snap-align: center
+	}
+
+	/* overlay action bar on the right side of each post */
+	.post-actions {
+		position: absolute;
+		right: 18px;
+		top: 50%;
+		transform: translateY(-50%);
+		flex-direction: column;
+		gap: 12px;
+		background: transparent;
+		padding: 0;
+		margin: 0
+	}
+
+	.post-actions .action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		padding: .28rem .48rem;
+		border-radius: 6px;
+		background: linear-gradient(90deg, var(--nav-bg-1), var(--nav-bg-2));
+		color: #fff;
+		border: 1px solid transparent;
+		cursor: pointer;
+		font-size: 13px
+	}
+
+	/* author/meta overlay at bottom-left of the media - apply only for posts that have media */
+	.post:has(.post-image) .post-header {
+		position: absolute;
+		left: 18px;
+		bottom: 22px;
+		background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+		padding: 6px 10px;
+		border-radius: 8px;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		gap: 8px
+	}
+
+	.post:has(.post-image) .post-header .avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 999px;
+		border-width: 2px;
+		flex: 0 0 auto
+	}
+
+	/* For posts without media, keep header in normal flow so it doesn't overlap text */
+	.post:not(:has(.post-image)) .post-header {
+		position: static;
+		background: transparent;
+		padding: 0;
+		border-radius: 0;
+		color: var(--accent)
+	}
+
+	/* ensure header overlay sits above media and its text doesn't wrap under the avatar */
+	.post-header {
+		z-index: 30;
+		max-width: calc(100% - 120px)
+	}
+
+	.post-header>div {
+		min-width: 0
+	}
+
+	.post-header .author {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 220px
+	}
+
+	.post-header .meta {
+		display: block;
+		opacity: 0.95;
+		font-size: 12px
+	}
+
+	/* avoid overlaying the caption/text below the media by reserving bottom padding */
+	.post-content {
+		padding-bottom: 56px
+	}
+
+	.post-header .author {
+		font-size: 15px;
+		color: #fff
+	}
+
+	.post-header .meta {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 12px
+	}
+
+	/* move textual content below the reel as compact caption */
+	.post-content {
+		position: relative;
+		padding: 10px 16px;
+		color: var(--muted-2);
+		font-size: 14px;
+		line-height: 1.4;
+		margin-top: 8px
+	}
+
+	/* reduce composer visibility to not distract (optional) */
+	.composer {
+		max-width: 720px;
+		margin: 12px auto
+	}
+}
+
+.post {
+	background: var(--card-bg);
+	border: 1px solid var(--card-contrast);
+	/* Instagram-style: image-first cards — remove top padding so image can be flush */
+	padding: 0 8px 10px 8px;
+	/* top padding removed */
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(2, 6, 23, 0.04);
+	overflow: hidden;
+	/* ensure rounded corners clip children */
+}
+
+.post-header {
+	display: flex;
+	align-items: center;
+	gap: 10px
+}
+
+.post .avatar {
+	width: 36px;
+	height: 36px;
+	border-width: 2px
+}
+
+.post .author {
+	font-weight: 700;
+	color: var(--accent);
+	font-size: 14px
+}
+
+.post .meta {
+	color: var(--muted-2);
+	font-size: 12px
+}
+
+.post-content {
+	margin-top: 8px;
+	color: var(--accent);
+	line-height: 1.4;
+	font-size: 14px
+}
+
+.post-image {
+	margin: 0;
+	width: 100%;
+	border-radius: 0;
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(10, 20, 30, 0.08), rgba(5, 10, 15, 0.04));
+	/* default Instagram-style square */
+	aspect-ratio: 1 / 1;
+	max-height: 62vh;
+}
+
+/* make the image fill to the card edges and restore rounded top corners */
+.post-image img {
+	border-radius: 8px 8px 0 0
+}
+
+.post-image .img-placeholder {
+	width: 100%;
+	height: 0;
+	padding-top: 56.25%;
+	display: block;
+	border-radius: 8px
+}
+
+.post-image .img-placeholder.city {
+	background: linear-gradient(90deg, #0f172a, #0ea5a4);
+}
+
+.post-image .img-placeholder.gradient {
+	background: linear-gradient(90deg, #4f46e5, #ec4899);
+}
+
+.post-actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-top: 8px
+}
+
+.post-actions .action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: .28rem .48rem;
+	border-radius: 6px;
+	background: linear-gradient(90deg, var(--nav-bg-1), var(--nav-bg-2));
+	color: #fff;
+	border: 1px solid transparent;
+	cursor: pointer;
+	font-size: 13px
+}
+
+.post-actions .action:focus {
+	outline: 2px solid rgba(14, 165, 164, 0.12);
+	outline-offset: 2px
+}
+
+.post-actions .action svg {
+	width: 18px;
+	height: 18px
+}
+
+.post-footer {
+	margin-top: var(--space-3);
+	color: var(--muted-2);
+	font-size: 13px
+}
+
+/* Composer (post form) styles */
+.composer {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+	border: 1px solid var(--card-contrast);
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 16px
+}
+
+.composer .compose-row {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start
+}
+
+.composer .compose-avatar {
+	width: 36px;
+	height: 36px
+}
+
+.composer textarea {
+	flex: 1;
+	min-height: 64px;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.04);
+	padding: 8px;
+	border-radius: 8px;
+	color: var(--accent);
+	resize: vertical;
+	font-size: 14px
+}
+
+.composer .compose-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: var(--space-2)
+}
+
+.composer .file {
+	color: var(--muted-2);
+	font-size: 13px
+}
+
+.composer button.submit {
+	background: linear-gradient(90deg, var(--nav-bg-2), #7c3aed);
+	color: #fff;
+	padding: .5rem .9rem;
+	border-radius: 10px;
+	border: 0;
+	cursor: pointer
+}
+
+.composer button.submit:focus {
+	outline: 3px solid rgba(14, 165, 164, 0.16)
+}
+
+/* Post image real img styling */
+.post-image img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	border-radius: 8px
+}
+
+/* Aspect modifiers for common social ratios */
+.post-image.landscape {
+	aspect-ratio: 16 / 9
+}
+
+.post-image.square {
+	aspect-ratio: 1 / 1
+}
+
+.post-image.reel {
+	aspect-ratio: 9 / 16;
+	max-height: 90vh
+}
+
+/* Smaller max heights for very small screens */
+@media (max-width:420px) {
+	.post-image {
+		max-height: 62vh
+	}
+
+	.post-image.reel {
+		max-height: 88vh
+	}
+}
+
+/* Visual polish for author/meta */
+.post .author {
+	font-size: 15px
+}
+
+.post .meta {
+	font-size: 13px;
+	color: var(--muted-2)
+}
+
+/* Action button polish */
+.post-actions .action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: .28rem .48rem;
+	border-radius: 6px;
+	background: linear-gradient(90deg, var(--nav-bg-1), var(--nav-bg-2));
+	color: #fff;
+	border: 1px solid transparent;
+	cursor: pointer;
+	font-size: 13px
+}
+
+.post-actions .action:hover {
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--accent);
+	transform: translateY(-2px)
+}
+
+
+@keyframes ring-rotate {
+	from {
+		transform: rotate(0deg)
+	}
+
+	to {
+		transform: rotate(360deg)
+	}
+}
+
+@keyframes badge-pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1
+	}
+
+	50% {
+		transform: scale(1.08);
+		opacity: .95
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1
+	}
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0)
+	}
+
+	50% {
+		transform: translateY(-3px)
+	}
+
+	100% {
+		transform: translateY(0)
+	}
+}
+
+/* Card reveal + menu animations */
+@keyframes card-reveal {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(.998)
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1)
+	}
+}
+
+/* directional slide-in used to create sideways arrival feel */
+@keyframes slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-18px) translateY(6px) scale(.998)
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) translateY(0) scale(1)
+	}
+}
+
+@keyframes slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(18px) translateY(6px) scale(.998)
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) translateY(0) scale(1)
+	}
+}
+
+@keyframes menu-fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(6px)
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0)
+	}
+}
+
+/* Classes used by the scroll JS for entering animations */
+.enter-from-left {
+	animation: slide-in-left var(--motion-medium) cubic-bezier(.2, .9, .2, 1) both
+}
+
+.enter-from-right {
+	animation: slide-in-right var(--motion-medium) cubic-bezier(.2, .9, .2, 1) both
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+	.enter-from-left,
+	.enter-from-right {
+		animation: none !important
+	}
+}
+
+/* Apply a gentle reveal to posts; will be staggered via nth-child selectors below */
+.feed .post {
+	opacity: 0;
+	will-change: transform, opacity;
+	animation-duration: var(--motion-slow);
+	animation-timing-function: cubic-bezier(.2, .9, .2, 1);
+	animation-fill-mode: both;
+}
+
+/* Stagger the first several cards for a cascading effect */
+.feed .post:nth-child(odd) {
+	animation-name: slide-in-left
+}
+
+.feed .post:nth-child(even) {
+	animation-name: slide-in-right
+}
+
+/* Stagger the first several cards for a cascading effect */
+.feed .post:nth-child(1) {
+	animation-delay: 120ms
+}
+
+.feed .post:nth-child(2) {
+	animation-delay: 220ms
+}
+
+.feed .post:nth-child(3) {
+	animation-delay: 320ms
+}
+
+.feed .post:nth-child(4) {
+	animation-delay: 420ms
+}
+
+.feed .post:nth-child(5) {
+	animation-delay: 520ms
+}
+
+.feed .post:nth-child(6) {
+	animation-delay: 620ms
+}
+
+/* Animate profile menu when visible (uses removal of [hidden] or when shown) */
+.profile-menu:not([hidden]) {
+	animation: menu-fade-up var(--motion-medium) cubic-bezier(.2, .9, .2, 1) both;
+	will-change: transform, opacity;
+}
+
+.icon-btn {
+	transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease
+}
+
+.icon-btn svg {
+	transition: transform var(--motion-fast) ease, fill var(--motion-fast) ease, color var(--motion-fast) ease
+}
+
+.icon-btn:hover {
+	transform: translateY(-2px) scale(1.02);
+	box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
+	background: rgba(255, 255, 255, 0.06)
+}
+
+.icon-btn:active {
+	transform: translateY(0) scale(.99)
+}
+
+/* slightly smoother icon transitions using nav token */
+.icon-btn {
+	transition: transform var(--nav-subtle-duration) cubic-bezier(.2, .9, .2, 1), box-shadow var(--nav-subtle-duration) ease, background var(--nav-subtle-duration) ease
+}
+
+/* subtle animated gradient overlay for navbar to add life */
+.navbar::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(120deg, rgba(14, 165, 164, 0.03), rgba(124, 58, 237, 0.02), rgba(14, 165, 164, 0.02));
+	mix-blend-mode: overlay;
+	opacity: .9;
+	transform-origin: center;
+	animation: nav-shift var(--nav-anim-duration) linear infinite
+}
+
+@keyframes nav-shift {
+	0% {
+		transform: translateX(-8%)
+	}
+
+	50% {
+		transform: translateX(8%)
+	}
+
+	100% {
+		transform: translateX(-8%)
+	}
+}
+
+/* Brand hover pop */
+.brand svg {
+	transition: transform var(--motion-medium) ease, box-shadow var(--motion-medium) ease
+}
+
+.brand:hover svg {
+	transform: scale(1.04) translateY(-2px)
+}
+
+/* Search focus stronger shadow */
+.search input[type=search]:focus {
+	box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5), 0 0 0 4px rgba(14, 165, 164, 0.04)
+}
+
+.badge {
+	transition: transform var(--motion-medium) ease, opacity var(--motion-medium) ease
+}
+
+.badge[data-live="true"] {
+	animation: badge-pulse 1400ms infinite cubic-bezier(.4, 0, .2, 1)
+}
+
+.story-ring {
+	animation: ring-rotate 6s linear infinite
+}
+
+.profile-btn {
+	transition: transform var(--motion-medium) ease, box-shadow var(--motion-medium) ease
+}
+
+.profile-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 30px rgba(2, 6, 23, 0.14)
+}
+
+.avatar {
+	transition: transform var(--motion-medium) ease, box-shadow var(--motion-medium) ease
+}
+
+.profile-btn:hover .avatar {
+	transform: translateY(-3px) scale(1.02);
+	box-shadow: 0 6px 18px rgba(2, 6, 23, 0.12)
+}
+
+.search input[type=search] {
+	transition: width var(--motion-medium) ease, background var(--motion-medium) ease, box-shadow var(--motion-medium) ease
+}
+
+.search input[type=search]:focus {
+	width: 100%;
+	max-width: 540px
+}
+
+.hamburger {
+	transition: transform var(--motion-medium) ease
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+	transform: translateY(6px) rotate(45deg)
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+	opacity: 0
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+	transform: translateY(-6px) rotate(-45deg)
+}
+
+/* subtle idle motion for hero icon when idle */
+.icon-btn.idle {
+	animation: float 3500ms ease-in-out infinite
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+	.story-ring,
+	.badge,
+	.icon-btn,
+	.profile-btn,
+	.icon-btn.idle,
+	.post,
+	.profile-menu {
+		animation: none !important;
+		transition: none !important
+	}
+}
+
+/* --- Mobile (small phones) tweaks --- */
+@media (max-width:420px) {
+	:root {
+		--space-3: 12px;
+		--space-4: 16px
+	}
+
+	/* tighter container */
+	.container {
+		padding: 0 12px
+	}
+
+	.navbar {
+		padding: .4rem .6rem
+	}
+
+	/* brand and search compact */
+	.brand svg {
+		width: 30px;
+		height: 30px
+	}
+
+	.brand-name {
+		display: none
+	}
+
+	/* make icon buttons easier to tap */
+	.icon-btn {
+		padding: .6rem;
+		border-radius: 12px
+	}
+
+	.icon-btn svg {
+		width: 18px;
+		height: 18px
+	}
+
+	.badge {
+		top: 6px;
+		right: 6px;
+		padding: 3px 7px;
+		font-size: 12px
+	}
+
+	/* post card compactness */
+	.post {
+		padding: 12px;
+		border-radius: 10px
+	}
+
+	.post .avatar {
+		width: 40px;
+		height: 40px
+	}
+
+	.post .author {
+		font-size: 14px
+	}
+
+	.post-content {
+		font-size: 14px
+	}
+
+	.feed {
+		gap: var(--space-3)
+	}
+
+	/* composer tweaks */
+	.composer {
+		padding: 12px
+	}
+
+	.composer textarea {
+		min-height: 72px
+	}
+
+	/* Ensure composer layout can wrap so the Post button won't overflow */
+	.composer .compose-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 10px
+	}
+
+	.composer .compose-row>div {
+		flex: 1 1 160px;
+		min-width: 0
+	}
+
+	.composer textarea {
+		min-width: 0;
+		width: 100%
+	}
+
+	.composer .compose-actions {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: flex-end
+	}
+
+	.composer .compose-actions .file {
+		order: 1
+	}
+
+	.composer button.submit {
+		order: 2;
+		flex: 0 0 auto
+	}
+
+	/* stabilize images on small screens */
+	.post-image img {
+		max-height: 260px;
+		object-fit: cover
+	}
+}
+
+@media (max-width:360px) {
+	:root {
+		--space-2: 8px;
+		--space-3: 10px
+	}
+
+	.navbar {
+		padding: .3rem .5rem
+	}
+
+	.brand svg {
+		width: 28px;
+		height: 28px
+	}
+
+	/* further compact the feed */
+	.post {
+		padding: 10px
+	}
+
+	.post .avatar {
+		width: 36px;
+		height: 36px
+	}
+
+	.post .author {
+		font-size: 13px
+	}
+
+	.post-content {
+		font-size: 13px;
+		line-height: 1.4
+	}
+
+	/* smaller images to avoid long scrolls on tiny phones */
+	.post-image img {
+		max-height: 200px
+	}
+
+	/* ensure hamburger and nav remain usable */
+	.hamburger {
+		padding: .4rem
+	}
+
+	/* On very small screens stack composer actions vertically to avoid overflow */
+	.composer .compose-actions {
+		flex-direction: column;
+		align-items: stretch
+	}
+
+	.composer button.submit {
+		width: 100%;
+		margin-top: 8px
+	}
+}
+
+/* Optional extra compact tweaks for ultra-compact mode */
+@media (min-width:900px) {
+	.post .author {
+		font-size: 13px
+	}
+
+	.post-content {
+		font-size: 13px
+	}
+}
+
+/* Micro-interactions: image parallax, badge glow, shimmer skeleton, icon press */
+@keyframes shimmer {
+	0% {
+		background-position: -150% 0
+	}
+
+	100% {
+		background-position: 150% 0
+	}
+}
+
+/* Shimmer placeholder for image loading states */
+.post-image .img-placeholder.shimmer {
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.02) 100%);
+	background-size: 200% 100%;
+	animation: shimmer 1200ms linear infinite;
+}
+
+/* Image hover parallax / subtle scale (only for pointer devices and when motion is allowed) */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	.post-image img {
+		transition: transform var(--motion-medium) cubic-bezier(.2, .9, .2, 1), box-shadow var(--motion-medium) ease;
+		transform-origin: center
+	}
+
+	.post-image:hover img {
+		transform: scale(1.035) translateY(-6px);
+		box-shadow: 0 12px 30px rgba(2, 6, 23, 0.08)
+	}
+
+	/* Slightly stronger badge pulse + glow */
+	.badge[data-live="true"] {
+		animation: badge-pulse 1600ms infinite cubic-bezier(.4, 0, .2, 1)
+	}
+
+	.badge[data-live="true"]::after {
+		content: "";
+		position: absolute;
+		inset: -6px;
+		border-radius: 999px;
+		box-shadow: 0 0 18px rgba(14, 165, 164, 0.06);
+		pointer-events: none;
+		opacity: .9
+	}
+
+	/* Icon press micro-feedback */
+	.icon-btn:active {
+		transform: translateY(1px) scale(.985)
+	}
+
+	.icon-btn:focus-visible {
+		box-shadow: 0 0 0 4px rgba(14, 165, 164, 0.08)
+	}
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+	.post-image .img-placeholder.shimmer,
+	.post-image img {
+		animation: none !important;
+		transition: none !important
+	}
+}
+
+/* Desktop orientation handling & mobile float animations */
+@media (min-width:1000px) {
+
+	/* ensure images are centered in their containers */
+	.post-image img {
+		object-position: center center
+	}
+
+	/* Landscape photos display as wide banners on desktop rather than forcing tall reel crop */
+	.post-image.landscape {
+		aspect-ratio: 16 / 9;
+		max-height: 44vh;
+		margin: 0 auto;
+		border-radius: 12px;
+		overflow: hidden
+	}
+
+	/* Portrait / reel images keep the tall reel treatment */
+	.post-image.portrait,
+	.post-image.reel {
+		aspect-ratio: 9 / 16;
+		max-height: calc(100vh - 140px)
+	}
+}
+
+@media (max-width:900px) and (prefers-reduced-motion: no-preference) {
+	@keyframes float-in-up {
+		from {
+			transform: translateY(18px) scale(.995);
+			opacity: 0
+		}
+
+		to {
+			transform: translateY(0) scale(1);
+			opacity: 1
+		}
+	}
+
+	@keyframes float-in-down {
+		from {
+			transform: translateY(-18px) scale(.995);
+			opacity: 0
+		}
+
+		to {
+			transform: translateY(0) scale(1);
+			opacity: 1
+		}
+	}
+
+	@keyframes float-out-up {
+		from {
+			transform: translateY(0) scale(1);
+			opacity: 1
+		}
+
+		to {
+			transform: translateY(-24px) scale(.995);
+			opacity: 0
+		}
+	}
+
+	@keyframes float-out-down {
+		from {
+			transform: translateY(0) scale(1);
+			opacity: 1
+		}
+
+		to {
+			transform: translateY(24px) scale(.995);
+			opacity: 0
+		}
+	}
+
+	.enter-from-bottom {
+		animation: float-in-up var(--motion-medium) cubic-bezier(.2, .9, .2, 1) both
+	}
+
+	.enter-from-top {
+		animation: float-in-down var(--motion-medium) cubic-bezier(.2, .9, .2, 1) both
+	}
+
+	.exit-up {
+		animation: float-out-up var(--motion-fast) cubic-bezier(.2, .9, .2, 1) both
+	}
+
+	.exit-down {
+		animation: float-out-down var(--motion-fast) cubic-bezier(.2, .9, .2, 1) both
+	}
+
+	/* hint that .post-image will be animated (improves perf) */
+	.post-image {
+		will-change: transform, opacity
+	}
+
+	/* On mobile, disable the initial staggered reveal so the observer controls motion */
+	.feed .post {
+		animation: none;
+		opacity: 1
+	}
+}
+
+
+
+
+/* Hover and active states for post action buttons */
+.post-actions .action:hover {
+	filter: brightness(1.15);
+	transform: translateY(-2px);
+}
+
+.post-actions .action:active {
+	filter: brightness(0.9);
+	transform: translateY(1px) scale(0.98);
+	transition: transform 0.08s;
+}
+
+
+/* Glitch click effect */
+.post-actions .action {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Duplicate layers for glitch slices */
+.post-actions .action::before,
+.post-actions .action::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: inherit;
+	opacity: 0;
+	pointer-events: none;
+	mix-blend-mode: screen;
+}
+
+/* Click animation */
+.post-actions .action:active::before {
+	opacity: 1;
+	animation: glitch-slice-1 120ms steps(2) forwards;
+}
+
+.post-actions .action:active::after {
+	opacity: 1;
+	animation: glitch-slice-2 120ms steps(2) forwards;
+}
+
+/* Glitch keyframes */
+@keyframes glitch-slice-1 {
+	0% {
+		transform: translate(0, 0);
+		clip-path: inset(0 0 60% 0);
+	}
+
+	50% {
+		transform: translate(-3px, -2px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes glitch-slice-2 {
+	0% {
+		transform: translate(0, 0);
+		clip-path: inset(40% 0 0 0);
+	}
+
+	50% {
+		transform: translate(3px, 2px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}

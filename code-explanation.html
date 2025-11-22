@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Explanation — Serene Navbar</title>
+  <style>
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:24px; color:#0b1220}
+    h1,h2{color:#071029}
+    pre{background:#f8fafc;border:1px solid #e2e8f0;padding:12px;border-radius:8px;overflow:auto}
+    .line{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid #f1f5f9}
+    .code{width:55%;white-space:pre-wrap;font-family:SFMono-Regular,Menlo,monospace;background:transparent}
+    .explain{width:45%;padding-left:8px}
+    .note{background:#eef2ff;border-left:4px solid #c7d2fe;padding:8px;margin:12px 0;border-radius:6px}
+  </style>
+</head>
+<body>
+  <h1>Annotated Code: `index.html`, `app.css`, `assets/avatar.svg`</h1>
+  <p>This document lists the files used for the navbar and provides a line-by-line explanation of what each line does and why it works. Use your browser's Print → Save as PDF to create a downloadable PDF from this page (instructions below).</p>
+
+  <h2>How to export to PDF (quick)</h2>
+  <div class="note">
+    <strong>Browser:</strong> Open this file (`code-explanation.html`) in your browser and choose <em>Print</em> → <em>Save as PDF</em>.
+    <br><br>
+    <strong>Edge/Chrome headless (PowerShell):</strong>
+    <pre>msedge --headless --disable-gpu --print-to-pdf="code-explanation.pdf" "file:///{pwd}/code-explanation.html"</pre>
+    Replace `msedge` with `chrome` if you have Chrome. If the command fails on Windows, open with a browser and use Print → Save as PDF.
+  </div>
+
+  <h2>File: index.html</h2>
+
+  <!-- We'll show each line and then an explanation. -->
+  <div>
+    <!-- Using a manual listing of lines for readability -->
+
+    <div class="line"><div class="code">&lt;!DOCTYPE html&gt;</div><div class="explain">Declares HTML5 document type. Tells browsers to render using standards mode rather than quirks mode.</div></div>
+    <div class="line"><div class="code">&lt;html lang="en"&gt;</div><div class="explain">Root element; <code>lang="en"</code> indicates the document language for accessibility and search engines.</div></div>
+    <div class="line"><div class="code">&lt;head&gt;</div><div class="explain">Metadata container: title, links to stylesheets, meta tags, etc.</div></div>
+    <div class="line"><div class="code">    &lt;meta charset="UTF-8"&gt;</div><div class="explain">Sets character encoding to UTF-8 so characters render correctly (accents, symbols).</div></div>
+    <div class="line"><div class="code">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div><div class="explain">Makes layout responsive on mobile by setting the viewport width to the device width and initial zoom to 1.</div></div>
+    <div class="line"><div class="code">    &lt;title&gt;Document&lt;/title&gt;</div><div class="explain">Document title displayed in browser tab. It's generic here; you can replace with the app name (e.g., "Serene").</div></div>
+    <div class="line"><div class="code">    &lt;link rel="stylesheet" href="app.css"&gt;</div><div class="explain">Loads `app.css` (styles) into the page. The browser requests this file and applies the rules to the DOM elements.</div></div>
+    <div class="line"><div class="code">&lt;/head&gt;</div><div class="explain">Closes the head section.</div></div>
+    <div class="line"><div class="code">&lt;body&gt;</div><div class="explain">Page body — visible content goes here.</div></div>
+
+    <div class="line"><div class="code">    &lt;nav class="navbar" role="navigation" aria-label="Main"&gt;</div><div class="explain">A semantic navigation bar. <code>role="navigation"</code> and <code>aria-label="Main"</code> help screen readers identify the region.</div></div>
+    <div class="line"><div class="code">        &lt;div class="nav-left"&gt;</div><div class="explain">Container for left-aligned nav content (brand/logo). CSS uses this for layout.</div></div>
+    <div class="line"><div class="code">            &lt;a class="brand" href="/" aria-label="Serene home"&gt;</div><div class="explain">Brand link to the root of the site. <code>aria-label</code> gives a descriptive name to assistive tech (screen readers).</div></div>
+    <div class="line"><div class="code">                &lt;!-- Temporary Serene logo: rounded mark with gradient and letter S --&gt;</div><div class="explain">A comment explaining the inline SVG below is a temporary logo. Comments are ignored by browsers.</div></div>
+    <div class="line"><div class="code">                &lt;svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"&gt;</div><div class="explain">Inline SVG for the logo. <code>aria-hidden="true"</code> hides it from assistive tech because the link already has an accessible label.</div></div>
+    <div class="line"><div class="code">                    &lt;defs&gt;</div><div class="explain">SVG definitions container; used for re-usable gradients and shapes inside the SVG.</div></div>
+    <div class="line"><div class="code">                        &lt;linearGradient id="sereneGrad" x1="0" x2="1"&gt;</div><div class="explain">Defines a linear gradient with ID <code>sereneGrad</code>. Later shapes reference this via <code>fill="url(#sereneGrad)"</code>.</div></div>
+    <div class="line"><div class="code">                            &lt;stop offset="0" stop-color="#071029"/&gt;</div><div class="explain">Gradient start color (dark navy). Stops are gradient color points.</div></div>
+    <div class="line"><div class="code">                            &lt;stop offset="1" stop-color="#0ea5a4"/&gt;</div><div class="explain">Gradient end color (teal accent). The gradient smoothly transitions between the two stop colors.</div></div>
+    <div class="line"><div class="code">                        &lt;/linearGradient&gt;</div><div class="explain">Closes the gradient definition.</div></div>
+    <div class="line"><div class="code">                    &lt;/defs&gt;</div><div class="explain">Closes SVG definitions block.</div></div>
+    <div class="line"><div class="code">                    &lt;rect width="36" height="36" rx="8" fill="url(#sereneGrad)" /&gt;</div><div class="explain">Draws a rounded rectangle using the gradient as the fill. <code>rx</code> sets corner radius for rounded look.</div></div>
+    <div class="line"><div class="code">                    &lt;text x="50%" y="55%" text-anchor="middle" fill="#e6fbfb" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" font-size="16" font-weight="700"&gt;S&lt;/text&gt;</div><div class="explain">Places the letter "S" centrally in the logo; using <code>text-anchor="middle"</code> centers horizontally at 50% x. This is a simple temporary mark for the brand.</div></div>
+    <div class="line"><div class="code">                &lt;/svg&gt;</div><div class="explain">Closes the inline SVG markup.</div></div>
+    <div class="line"><div class="code">                &lt;span class="brand-name"&gt;Serene&lt;/span&gt;</div><div class="explain">Visible brand text next to the logo. CSS targets <code>.brand-name</code> to style font-weight, spacing, and to hide on small screens.</div></div>
+    <div class="line"><div class="code">            &lt;/a&gt;</div><div class="explain">Closes the brand anchor/link so clicking the logo/text navigates home.</div></div>
+    <div class="line"><div class="code">        &lt;/div&gt;</div><div class="explain">Closes the left nav container.</div></div>
+
+    <div class="line"><div class="code">        &lt;div class="nav-center"&gt;</div><div class="explain">Center portion of the navbar used for the search control.</div></div>
+    <div class="line"><div class="code">            &lt;div class="search" role="search"&gt;</div><div class="explain">Search container; <code>role="search"</code> helps assistive tech identify the search region.</div></div>
+    <div class="line"><div class="code">                &lt;label for="global-search" class="visually-hidden"&gt;Search posts, people, topics&lt;/label&gt;</div><div class="explain">An accessible label for the search input. <code>class="visually-hidden"</code> hides it visually while keeping it available to screen readers (CSS should implement the visually-hidden utility to clip it).</div></div>
+    <div class="line"><div class="code">                &lt;svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">Small inline SVG for a magnifying glass icon. Hidden from assistive tech with <code>aria-hidden</code>.</div></div>
+    <div class="line"><div class="code">                    &lt;path d="M21 21l-4.35-4.35" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;</div><div class="explain">SVG path for the handle of the magnifier; styling applied directly here since this is a simple icon.</div></div>
+    <div class="line"><div class="code">                    &lt;circle cx="11" cy="11" r="6" stroke="#6b7280" stroke-width="2" fill="none"/&gt;</div><div class="explain">Circle for the magnifier lens. Using a stroke-only circle keeps the icon lightweight and crisp.</div></div>
+    <div class="line"><div class="code">                &lt;/svg&gt;</div><div class="explain">Close search icon SVG.</div></div>
+    <div class="line"><div class="code">                &lt;input id="global-search" type="search" placeholder="Search" autocomplete="off" aria-autocomplete="both" /&gt;</div><div class="explain">Search input field: <code>type="search"</code> gives browser-specific affordances; <code>placeholder</code> shows hint text. <code>aria-autocomplete</code> hints at autocomplete behavior (the markup also includes a suggestions list).</div></div>
+    <div class="line"><div class="code">                &lt;div class="search-suggestions" role="listbox" hidden&gt;</div><div class="explain">Container for suggestion items. <code>role="listbox"</code> is appropriate for selectable suggestions. Initially hidden; JS can toggle it.</div></div>
+    <div class="line"><div class="code">                    &lt;div role="option"&gt;Profiles&lt;/div&gt;</div><div class="explain">An individual suggestion item. <code>role="option"</code> marks list items for screen readers.</div></div>
+    <div class="line"><div class="code">                    &lt;div role="option"&gt;Hashtags&lt;/div&gt;</div><div class="explain">Another suggestion option. In a dynamic app these would be generated by JS according to the query.</div></div>
+    <div class="line"><div class="code">                    &lt;div role="option"&gt;Places&lt;/div&gt;</div><div class="explain">Third sample suggestion to illustrate structure.</div></div>
+    <div class="line"><div class="code">                &lt;/div&gt;</div><div class="explain">Closes the suggestion list container.</div></div>
+    <div class="line"><div class="code">            &lt;/div&gt;</div><div class="explain">Closes the search container.</div></div>
+    <div class="line"><div class="code">        &lt;/div&gt;</div><div class="explain">Closes center nav container.</div></div>
+
+    <div class="line"><div class="code">        &lt;div class="nav-right"&gt;</div><div class="explain">Right side of the navbar containing action buttons and the profile control.</div></div>
+    <div class="line"><div class="code">            &lt;ul class="nav-actions" role="menubar" aria-label="Primary"&gt;</div><div class="explain">List of primary action buttons. Using <code>ul</code> + <code>role="menubar"</code> improves keyboard navigation semantics for menus of controls.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">A list item wrapper. <code>role="none"</code> ensures it doesn't present an extra semantic layer when buttons inside already provide roles and controls.</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Home" title="Home"&gt;</div><div class="explain">An icon-only button for home. <code>aria-label</code> provides a text alternative for screen readers; <code>title</code> shows a tooltip on hover in many browsers.</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">SVG for the home icon; again marked hidden to avoid redundancy with the accessible label.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10.5z" fill="currentColor"/&gt;</div><div class="explain">Path data draws the house shape. <code>fill="currentColor"</code> lets the icon inherit the current text color, so CSS can change it on hover, active states, or dark mode.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">Close home icon SVG.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Closes the home button element.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End of this menu item. The pattern repeats for other icon buttons.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">Explore button wrapper (same structure as above).</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Explore" title="Explore"&gt;</div><div class="explain">Icon button for exploratory content; accessible label helps assistive tech.</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">SVG for explore icon; semantic label already provides context for screen readers.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M12 2l3.5 7.5L23 11l-6 4 2 8L12 18 5 23l2-8-6-4 7.5-1.5L12 2z" fill="currentColor"/&gt;</div><div class="explain">Icon path; <code>currentColor</code> keeps styling flexible via CSS.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">End explore icon.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">End explore button.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End list item.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">Reels button wrapper (same pattern).</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Reels" title="Reels"&gt;</div><div class="explain">Icon button for short-form media (label is descriptive).</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">SVG for reels icon.</div></div>
+    <div class="line"><div class="code">                            &lt;rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" fill="none"/&gt;</div><div class="explain">Outer rounded square for the reel icon, stroke-only so it looks outlined.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M10 8l6 4-6 4V8z" fill="currentColor"/&gt;</div><div class="explain">Play triangle inside the square; uses <code>currentColor</code> again to inherit color.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">Close reels icon.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Close the reels button.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End reels list item.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">Messages button wrapper.</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Messages" title="Messages"&gt;</div><div class="explain">Messages button; note a badge is used for unread count.</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">Messages icon SVG (chat bubble shape).</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="currentColor"/&gt;</div><div class="explain">Path draws a speech bubble using path commands; <code>currentColor</code> allows CSS to control the color.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">Close messages icon.</div></div>
+    <div class="line"><div class="code">                        &lt;span class="badge" aria-hidden="true"&gt;3&lt;/span&gt;</div><div class="explain">A small badge showing an unread count. <code>aria-hidden="true"</code> hides it from screen readers to avoid redundant announcements; screen reader-friendly implementations would also provide accessible text if needed.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Close messages button.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End messages list item.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">Create (post) button wrapper.</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Create" title="Create post"&gt;</div><div class="explain">Create post button. Accessible label explains the control to screen readers.</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">SVG used for a plus-in-circle icon to indicate creation.</div></div>
+    <div class="line"><div class="code">                            &lt;circle cx="12" cy="12" r="9" stroke="currentColor" fill="none"/&gt;</div><div class="explain">Outer circle, stroke-only, to create a ring around the plus.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/&gt;</div><div class="explain">Draws the plus sign using two strokes; rounded linecaps make the ends look soft.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">Close create icon.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Close create button.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End create list item.</div></div>
+
+    <div class="line"><div class="code">                &lt;li role="none"&gt;</div><div class="explain">Notifications button wrapper.</div></div>
+    <div class="line"><div class="code">                    &lt;button class="icon-btn" aria-label="Notifications" title="Notifications"&gt;</div><div class="explain">Notifications control; shows a badge as well.</div></div>
+    <div class="line"><div class="code">                        &lt;svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"&gt;</div><div class="explain">Bell icon SVG.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22z" fill="currentColor"/&gt;</div><div class="explain">Bottom curve of the bell; uses path data for smooth shape and <code>currentColor</code> for flexible styling.</div></div>
+    <div class="line"><div class="code">                            &lt;path d="M18 16V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2z" fill="currentColor"/&gt;</div><div class="explain">Main bell body drawn with another path; the two paths together form the full bell shape.</div></div>
+    <div class="line"><div class="code">                        &lt;/svg&gt;</div><div class="explain">Close notifications icon.</div></div>
+    <div class="line"><div class="code">                        &lt;span class="badge" aria-hidden="true"&gt;7&lt;/span&gt;</div><div class="explain">Badge showing notification count. Again, hidden from screen readers to avoid verbosity; a better approach is to provide accessible text describing unread counts programmatically.</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Close notifications button.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End notifications list item.</div></div>
+
+    <div class="line"><div class="code">                &lt;li class="profile" role="none"&gt;</div><div class="explain">Profile area wrapper; it contains the profile button and the menu that can open/close.</div></div>
+    <div class="line"><div class="code">                    &lt;button class="profile-btn" aria-haspopup="true" aria-expanded="false" title="Profile"&gt;</div><div class="explain">Profile button: <code>aria-haspopup="true"</code> indicates a popup menu may open; <code>aria-expanded</code> should be toggled to <code>true</code> when the menu opens (managed with JS).</div></div>
+    <div class="line"><div class="code">                        &lt;span class="story-ring" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="explain">Decorative element for a story ring effect around the avatar; hidden from screen readers since it is purely visual.</div></div>
+    <div class="line"><div class="code">                        &lt;img class="avatar" src="assets/avatar.svg" alt="Your profile" /&gt;</div><div class="explain">Profile image. The <code>alt</code> attribute provides accessible text if the image fails to load or for screen readers ("Your profile").</div></div>
+    <div class="line"><div class="code">                    &lt;/button&gt;</div><div class="explain">Closes the profile button; clicking should open the menu (via JS toggling).</div></div>
+    <div class="line"><div class="code">                    &lt;div class="profile-menu" role="menu" aria-label="Profile menu" hidden&gt;</div><div class="explain">Popup menu container. Initially hidden; when shown, <code>hidden</code> is removed and <code>aria-expanded</code> on the button should be set to <code>true</code>.</div></div>
+    <div class="line"><div class="code">                        &lt;a role="menuitem" href="/profile"&gt;Profile&lt;/a&gt;</div><div class="explain">Menu item linking to the user's profile. <code>role="menuitem"</code> clarifies the purpose inside the popup.</div></div>
+    <div class="line"><div class="code">                        &lt;a role="menuitem" href="/saved"&gt;Saved&lt;/a&gt;</div><div class="explain">Menu item for saved content.</div></div>
+    <div class="line"><div class="code">                        &lt;a role="menuitem" href="/settings"&gt;Settings&lt;/a&gt;</div><div class="explain">Menu item to access settings.</div></div>
+    <div class="line"><div class="code">                        &lt;button role="menuitem" class="logout"&gt;Log out&lt;/button&gt;</div><div class="explain">Logout is shown as a button since it performs an action; <code>role="menuitem"</code> keeps consistent semantics within the menu.</div></div>
+    <div class="line"><div class="code">                    &lt;/div&gt;</div><div class="explain">Close profile menu container.</div></div>
+    <div class="line"><div class="code">                &lt;/li&gt;</div><div class="explain">End profile list item.</div></div>
+    <div class="line"><div class="code">            &lt;/ul&gt;</div><div class="explain">Closes the nav actions list.</div></div>
+    <div class="line"><div class="code">        &lt;/div&gt;</div><div class="explain">Closes the right nav container.</div></div>
+
+    <div class="line"><div class="code">        &lt;button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"&gt;</div><div class="explain">Hamburger menu button for mobile. <code>aria-controls</code> points to the controlled element (e.g., a mobile menu); <code>aria-expanded</code> should toggle to reflect menu state.</div></div>
+    <div class="line"><div class="code">            &lt;span class="hamburger-line" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="explain">Visual line element inside the button. Marked hidden for assistive tech since the button has an accessible label.</div></div>
+    <div class="line"><div class="code">            &lt;span class="hamburger-line" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="explain">Second line.</div></div>
+    <div class="line"><div class="code">            &lt;span class="hamburger-line" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="explain">Third line; CSS transforms these when the button toggles to an X shape for the open state.</div></div>
+    <div class="line"><div class="code">        &lt;/button&gt;    </div><div class="explain">Closes the hamburger button element.</div></div>
+    <div class="line"><div class="code">    &lt;/nav&gt;</div><div class="explain">Closes the navigation bar.</div></div>
+    <div class="line"><div class="code">&lt;/body&gt;</div><div class="explain">End of document body.</div></div>
+    <div class="line"><div class="code">&lt;/html&gt;</div><div class="explain">End of the HTML document.</div></div>
+  </div>
+
+  <h2>File: app.css (annotated)</h2>
+  <div>
+<!-- We'll now list CSS lines with explanations. For brevity in the explanation column we group closely-related lines but keep a 1:1 mapping. -->
+
+<div class="line"><div class="code">:root{</div><div class="explain">Start of CSS custom properties (variables) scope — <code>:root</code> applies globally so variables can be used anywhere.</div></div>
+<div class="line"><div class="code">    --bg:#0b1220; /* page bg: deep midnight */</div><div class="explain">Defines <code>--bg</code> variable used as the page background color. Using variables makes theme changes easy.</div></div>
+<div class="line"><div class="code">    --nav-bg-1:#071029; /* dark navy */</div><div class="explain">Gradient start color (nav left) used to build the navbar gradient, giving a modern dark look.</div></div>
+<div class="line"><div class="code">    --nav-bg-2:#0ea5a4; /* teal accent */</div><div class="explain">Gradient end color (nav right); teal provides contrast and a contemporary accent color.</div></div>
+<div class="line"><div class="code">    --muted:#94a3b8;</div><div class="explain">Muted color variable used for secondary text or icons where needed.</div></div>
+<div class="line"><div class="code">    --glass: rgba(255,255,255,0.04);</div><div class="explain">A very subtle translucent white used for "glass" UI elements on dark backgrounds.</div></div>
+<div class="line"><div class="code">    --glass-border: rgba(255,255,255,0.06);</div><div class="explain">Slightly stronger translucent white for borders on UI elements to separate them from the background.</div></div>
+<div class="line"><div class="code">    --accent:#e6fbfb; /* light accent for text on dark */</div><div class="explain">Primary text color on the dark background — near-white with a cool tint for modern look.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End of the root variables block.</div></div>
+
+<div class="line"><div class="code">*{box-sizing:border-box}</div><div class="explain">Sets <code>box-sizing: border-box</code> for all elements so padding and borders are included in width/height calculations. This is a common global reset that prevents layout surprises.</div></div>
+<div class="line"><div class="code">html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--accent)}</div><div class="explain">Sets base page styles: full height, removes default body margin, applies the background color, sets a modern font stack, and sets the default text color to the <code>--accent</code> variable.</div></div>
+
+<div class="line"><div class="code">.navbar{</div><div class="explain">Start navbar styles: establishes layout and visual treatment for header.</div></div>
+<div class="line"><div class="code">    display:flex;</div><div class="explain">Uses Flexbox to align nav regions horizontally and distribute space.</div></div>
+<div class="line"><div class="code">    align-items:center;</div><div class="explain">Vertically centers items inside the navbar.</div></div>
+<div class="line"><div class="code">    justify-content:space-between;</div><div class="explain">Places left and right groups at opposite ends with center content placed appropriately.</div></div>
+<div class="line"><div class="code">    gap:1rem;</div><div class="explain">Adds consistent spacing between immediate children of the navbar.</div></div>
+<div class="line"><div class="code">    padding:0.5rem 1rem;</div><div class="explain">Adds vertical and horizontal padding inside the navbar for comfortable spacing.</div></div>
+<div class="line"><div class="code">    background: linear-gradient(90deg,var(--nav-bg-1),var(--nav-bg-2));</div><div class="explain">Applies a left→right gradient using the two nav color variables to produce a modern, subtle color shift.</div></div>
+<div class="line"><div class="code">    color:#fff;</div><div class="explain">Sets default text color inside the navbar to white to ensure contrast against the dark gradient.</div></div>
+<div class="line"><div class="code">    position:sticky;</div><div class="explain">Makes the navbar stick to the top of the viewport when scrolling so it remains visible.</div></div>
+<div class="line"><div class="code">    top:0;</div><div class="explain">Specifies the top edge for sticky positioning (stuck to the top).</div></div>
+<div class="line"><div class="code">    z-index:40;</div><div class="explain">Places the navbar above normal page content so it doesn't get overlapped. 40 is an arbitrary high value to avoid conflicts.</div></div>
+<div class="line"><div class="code">    box-shadow:0 6px 18px rgba(15,23,42,0.12);</div><div class="explain">A soft drop shadow creates separation and depth between the navbar and the page content below.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End navbar block.</div></div>
+
+<div class="line"><div class="code">.nav-left, .nav-center, .nav-right{display:flex;align-items:center}</div><div class="explain">Sets the three regions to use Flexbox and vertically center their children, enabling consistent layout across the navbar.</div></div>
+
+<div class="line"><div class="code">.brand{display:flex;align-items:center;gap:.5rem;color:inherit;text-decoration:none}</div><div class="explain">Brand container is a flex row (logo + text). <code>color:inherit</code ensures the link inherits the navbar's color. <code>text-decoration:none</code> removes default underlines.</div></div>
+<div class="line"><div class="code">.brand svg{border-radius:6px;box-shadow:0 4px 16px rgba(2,6,23,0.5)}</div><div class="explain">Gives the inline logo an elevated visual with a shadow and rounded corners for a polished look.</div></div>
+<div class="line"><div class="code">.brand-name{font-weight:700;font-size:1rem;letter-spacing:0.6px}</div><div class="explain">Increases logo text weight and spacing to feel modern, and makes it slightly larger for emphasis.</div></div>
+
+<div class="line"><div class="code">.search{position:relative;min-width:220px;width:360px;max-width:65vw}</div><div class="explain">Search container is relative to position the icon and suggestion box absolutely inside it. Widths provide sensible sizing and responsiveness.</div></div>
+<div class="line"><div class="code">.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none}</div><div class="explain">Positions the magnifying icon inside the input area; <code>pointer-events:none</code> allows clicks to go through to the input underneath.</div></div>
+<div class="line"><div class="code">.search input[type=search]{</div><div class="explain">Start of search input styling. Selecting by type helps target search-specific controls.</div></div>
+<div class="line"><div class="code">    width:100%;</div><div class="explain">Makes the input fill the search container horizontally.</div></div>
+<div class="line"><div class="code">    padding:8px 12px 8px 34px;</div><div class="explain">Adds left padding to make room for the search icon (34px), and vertical padding for comfortable tap targets.</div></div>
+<div class="line"><div class="code">    border-radius:999px;</div><div class="explain">Makes the input fully rounded for a pill-shaped look common in modern UIs.</div></div>
+<div class="line"><div class="code">    border:1px solid transparent;</div><div class="explain">Placeholder for a border; transparent by default to avoid harsh lines on dark background.</div></div>
+<div class="line"><div class="code">    background:rgba(255,255,255,0.03);</div><div class="explain">Subtle translucent background to differentiate the input from the navbar while keeping the dark theme.</div></div>
+<div class="line"><div class="code">    color:var(--accent);</div><div class="explain">Makes typed text light and legible against the dark background using the accent variable.</div></div>
+<div class="line"><div class="code">    outline:none;</div><div class="explain">Removes default focus outlines; custom focus styles are provided elsewhere for accessibility.</div></div>
+<div class="line"><div class="code">    transition:box-shadow .15s,background .15s,backdrop-filter .15s;</div><div class="explain">Smoothly animates visual changes when the input receives focus or loses it.</div></div>
+<div class="line"><div class="code">    backdrop-filter: blur(6px) saturate(120%);</div><div class="explain">Applies a blur/saturation effect on elements beneath the input to create a glassy look. Note: <code>backdrop-filter</code> has varying support across browsers but gracefully degrades.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End search input block.</div></div>
+<div class="line"><div class="code">.search input::placeholder{color:rgba(230,251,251,0.45)}</div><div class="explain">Styles placeholder text color to be muted yet readable on dark background.</div></div>
+<div class="line"><div class="code">.search input:focus{</div><div class="explain">Focus state for the input.</div></div>
+<div class="line"><div class="code">    background:rgba(255,255,255,0.06);</div><div class="explain">Slightly lighter background on focus to indicate the control is active.</div></div>
+<div class="line"><div class="code">    color:var(--accent);</div><div class="explain">Ensures text remains high-contrast while focused.</div></div>
+<div class="line"><div class="code">    box-shadow:0 8px 28px rgba(2,6,23,0.45);</div><div class="explain">Adds a deeper shadow to emphasize focus; works well against the dark background.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End focus state styles.</div></div>
+
+<div class="line"><div class="code">.search-suggestions{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border-radius:12px;padding:8px 6px;color:var(--accent);box-shadow:0 8px 30px rgba(2,6,23,0.12);}</div><div class="explain">Suggestion list styles: absolutely positioned under the input, white background (so suggestions are readable), rounded corners and a drop shadow for elevation. In a dark theme you might invert this, but white is typical for suggestion panes for readability.</div></div>
+<div class="line"><div class="code">.search-suggestions[hidden]{display:none}</div><div class="explain">Hides the suggestions when the <code>hidden</code> attribute is present. This makes toggling via JS simple (<code>elem.hidden = false</code> to show).</div></div>
+<div class="line"><div class="code">.search-suggestions [role="option"]{padding:8px 12px;border-radius:8px}</div><div class="explain">Each suggestion option gets padding and slight rounding to create touch-friendly rows.</div></div>
+<div class="line"><div class="code">.search-suggestions [role="option"]:hover{background:#f3f4f6}</div><div class="explain">Hover/focus styling for suggestion rows to indicate the current selection to the user.</div></div>
+
+<div class="line"><div class="code">.nav-actions{list-style:none;margin:0;padding:0;display:flex;gap:.4rem;align-items:center}</div><div class="explain">Removes default list styling and aligns the action buttons with consistent spacing using Flexbox.</div></div>
+<div class="line"><div class="code">.icon-btn{background:transparent;border:0;padding:.45rem .55rem;border-radius:10px;color:inherit;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;position:relative}</div><div class="explain">Icon buttons are visually minimal: transparent backgrounds with padding and rounded corners for hit area. <code>position:relative</code> allows badges to be absolutely positioned relative to the button.</div></div>
+<div class="line"><div class="code">.icon-btn:focus{outline:2px solid rgba(255,255,255,0.12);outline-offset:2px}</div><div class="explain">Custom focus outline for keyboard accessibility. This retains keyboard visibility while fitting the visual design.</div></div>
+
+<div class="line"><div class="code">.badge{position:absolute;top:4px;right:6px;background:#ff3b30;color:#fff;border-radius:999px;font-size:11px;padding:2px 6px;line-height:1;box-shadow:0 2px 6px rgba(0,0,0,0.2)}</div><div class="explain">Small red circular badge for counts (notifications, messages). Absolutely positioned so it sits over the top-right of its parent button. Box shadow helps it stand out against the navbar.</div></div>
+
+<div class="line"><div class="code">.profile{position:relative}</div><div class="explain">Profile wrapper is relative so the popup menu can be absolutely positioned relative to it.</div></div>
+<div class="line"><div class="code">.profile-btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.06));border:1px solid rgba(255,255,255,0.12);padding:.15rem .3rem;border-radius:999px;cursor:pointer}</div><div class="explain">Profile button has a subtle glassy gradient and border to make it look tactile on top of the navbar; fully rounded for pill-like appearance.</div></div>
+<div class="line"><div class="code">.profile-btn:focus{outline:3px solid rgba(255,255,255,0.12)}</div><div class="explain">Focus state similar to icon buttons but slightly stronger to make the profile control clearly focused.</div></div>
+
+<div class="line"><div class="code">.story-ring{width:40px;height:40px;border-radius:999px;display:inline-block;margin-right:-44px;box-shadow:0 0 0 3px rgba(255,255,255,0.06) inset;background:conic-gradient(from 120deg,var(--nav-bg-1),var(--nav-bg-2));}</div><div class="explain">Decorative ring behind the avatar to mimic "story" indicators. Implemented as a conic gradient for a colorful ring; negative margin pulls it behind the avatar image visually.</div></div>
+<div class="line"><div class="code">.avatar{width:36px;height:36px;border-radius:999px;border:2px solid #fff;display:inline-block;object-fit:cover}</div><div class="explain">Avatar image styling: circular crop, a white border to separate it from the ring, and <code>object-fit:cover</code> ensures the SVG or image scales and crops nicely within the box.</div></div>
+
+<div class="line"><div class="code">.profile-menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;color:var(--accent);min-width:160px;border-radius:12px;padding:8px 0;box-shadow:0 10px 30px rgba(2,6,23,0.12);border:1px solid rgba(15,23,42,0.04)}</div><div class="explain">Popup menu styling: absolute position places it under the profile button, white background keeps menu items readable, rounded corners and shadow provide separation, and a subtle border gives definition.</div></div>
+<div class="line"><div class="code">.profile-menu a,.profile-menu button{display:block;padding:10px 14px;text-decoration:none;color:inherit;background:transparent;border:0;text-align:left;width:100%;cursor:pointer}</div><div class="explain">Menu items are block-level to fill the menu width; styling removes default link/button visuals and uses padding to make them comfortable to click/tap.</div></div>
+<div class="line"><div class="code">.profile-menu a:hover,.profile-menu button:hover{background:#f3f4f6}</div><div class="explain">Hover/focus state for menu items to indicate which item the user is over.</div></div>
+<div class="line"><div class="code">.profile-menu[hidden]{display:none}</div><div class="explain">Hides the menu when the <code>hidden</code> attribute is present; toggle it with JS to show the menu.</div></div>
+
+<div class="line"><div class="code">.hamburger{display:none;background:transparent;border:0;padding:.35rem;border-radius:8px;color:inherit}</div><div class="explain">Hamburger button (hidden on desktop via media query). Transparent background and padding provide a large hit area for touch devices.</div></div>
+<div class="line"><div class="code">.hamburger-line{display:block;width:20px;height:2px;background:rgba(255,255,255,0.9);margin:3px 0;border-radius:2px}</div><div class="explain">Lines inside the hamburger: short, rounded rectangles. These transform into an X when the menu is open using CSS rules tied to <code>aria-expanded</code>.</div></div>
+
+<div class="line"><div class="code">@media (max-width:900px){</div><div class="explain">Media query for narrow viewports (tablets/phones). Adjusts which elements are visible to conserve space.</div></div>
+<div class="line"><div class="code">    .search{display:none}</div><div class="explain">Hides the centered search on small screens to save space. You can move search into a separate mobile UI if needed.</div></div>
+<div class="line"><div class="code">    .brand-name{display:none}</div><div class="explain">Hides brand text at narrow widths so only the logo remains visible, saving space.</div></div>
+<div class="line"><div class="code">    .hamburger{display:inline-flex}</div><div class="explain">Shows the hamburger button on small screens so users can open a mobile menu.</div></div>
+<div class="line"><div class="code">    .nav-right{gap:.2rem}</div><div class="explain">Tightens spacing on the right side to fit more icons when space is limited.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End media query block.</div></div>
+
+<div class="line"><div class="code">@media (prefers-color-scheme:light){</div><div class="explain">Detects if the user prefers a light color scheme; you can override variables to adapt the UI for light mode.</div></div>
+<div class="line"><div class="code">    :root{--bg:#fff}</div><div class="explain">Sets page background to white in light-mode. This example only switches the background; a full light-theme would adjust many more variables.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End prefers-color-scheme block.</div></div>
+
+<div class="line"><div class="code">@media (prefers-reduced-motion:reduce){</div><div class="explain">Respects users who request reduced motion for accessibility; this media query should disable non-essential animations and transitions.</div></div>
+<div class="line"><div class="code">    *{transition:none!important}</div><div class="explain">Globally disables transitions when reduced motion is requested to avoid motion-related discomfort.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End reduced-motion block.</div></div>
+
+<div class="line"><div class="code">/* Animations & lively interactions */</div><div class="explain">Section comment: animations and interactive transitions that make the navbar feel "alive".</div></div>
+<div class="line"><div class="code">:root{</div><div class="explain">Additional variables to control animation timing consistently across rules.</div></div>
+<div class="line"><div class="code">    --motion-fast: 120ms;</div><div class="explain">Fast duration for snappy UI responses.</div></div>
+<div class="line"><div class="code">    --motion-medium: 220ms;</div><div class="explain">Medium duration for primary animations like hover/expand.</div></div>
+<div class="line"><div class="code">    --motion-slow: 420ms;</div><div class="explain">Slower duration for non-critical, decorative motions.</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End animation timing variables.</div></div>
+
+<div class="line"><div class="code">@keyframes ring-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}</div><div class="explain">Keyframes for a continuously rotating story ring — subtle motion provides life without being distracting.</div></div>
+<div class="line"><div class="code">@keyframes badge-pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.95}100%{transform:scale(1);opacity:1}}</div><div class="explain">Pulse animation for badges to draw attention to live/unread counts. The scale is small to avoid being jarring.</div></div>
+<div class="line"><div class="code">@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-3px)}100%{transform:translateY(0)}}</div><div class="explain">Subtle floating motion used for idle icons to give a friendly, gentle movement.</div></div>
+
+<div class="line"><div class="code">.icon-btn{transition:transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease}</div><div class="explain">Defines transitions for icon buttons so hover and active states animate smoothly.</div></div>
+<div class="line"><div class="code">.icon-btn svg{transition:transform var(--motion-fast) ease, fill var(--motion-fast) ease, color var(--motion-fast) ease}</div><div class="explain">Also transition the SVG inside buttons so color/scale changes feel coordinated.</div></div>
+<div class="line"><div class="code">.icon-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 20px rgba(2,6,23,0.12);background:rgba(255,255,255,0.06)}</div><div class="explain">Hover state lifts the button slightly, scales it, and adds a faint background and shadow to indicate interactivity.</div></div>
+<div class="line"><div class="code">.icon-btn:active{transform:translateY(0) scale(.99)}</div><div class="explain">Active (press) state reduces the lift to give a tactile, pressed feel.</div></div>
+
+<div class="line"><div class="code">.badge{transition:transform var(--motion-medium) ease,opacity var(--motion-medium) ease}</div><div class="explain">Transition for badges so they can animate into or out of view smoothly.</div></div>
+<div class="line"><div class="code">.badge[data-live="true"]{animation:badge-pulse 1400ms infinite cubic-bezier(.4,0,.2,1)}</div><div class="explain">If a badge has <code>data-live="true"</code>, it will pulse continuously using the badge-pulse keyframes; using an attribute keeps semantics clear and toggling easy via JS.</div></div>
+
+<div class="line"><div class="code">.story-ring{animation:ring-rotate 6s linear infinite}</div><div class="explain">Applies the slow rotation to the story ring; 6s is deliberately long to stay subtle.</div></div>
+<div class="line"><div class="code">.profile-btn{transition:transform var(--motion-medium) ease,box-shadow var(--motion-medium) ease}</div><div class="explain">Profile button transitions for hover/active states so it feels responsive.</div></div>
+<div class="line"><div class="code">.profile-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(2,6,23,0.14)}</div><div class="explain">Hover effect for the profile button; slightly larger lift to emphasize the profile area.</div></div>
+
+<div class="line"><div class="code">.avatar{transition:transform var(--motion-medium) ease,box-shadow var(--motion-medium) ease}</div><div class="explain">Avatar transitions so it subtly moves with the profile button on hover, creating a cohesive visual effect.</div></div>
+<div class="line"><div class="code">.profile-btn:hover .avatar{transform:translateY(-3px) scale(1.02);box-shadow:0 6px 18px rgba(2,6,23,0.12)}</div><div class="explain">Targeting the avatar inside the profile button ensures the avatar moves slightly when the user hovers the profile control.</div></div>
+
+<div class="line"><div class="code">.search input[type=search]{transition:width var(--motion-medium) ease,background var(--motion-medium) ease,box-shadow var(--motion-medium) ease}</div><div class="explain">Search input animates width and visual changes so focusing the field feels smooth and polished.</div></div>
+<div class="line"><div class="code">.search input[type=search]:focus{width:100%;max-width:540px}</div><div class="explain">On focus the input can expand up to a larger max width giving room for longer queries on wide screens; the transition above animates that expansion.</div></div>
+
+<div class="line"><div class="code">.hamburger{transition:transform var(--motion-medium) ease}</div><div class="explain">Transition for the hamburger so it animates when toggling between open/closed states.</div></div>
+<div class="line"><div class="code">.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1){transform:translateY(6px) rotate(45deg)}</div><div class="explain">When the hamburger has <code>aria-expanded="true"</code>, CSS transforms create an 'X' by rotating/offsetting lines. Toggling <code>aria-expanded</code> (via JS) triggers this animation without extra JS transforms.</div></div>
+<div class="line"><div class="code">.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2){opacity:0}</div><div class="explain">Hides the middle line in the open state — part of the X animation.</div></div>
+<div class="line"><div class="code">.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}</div><div class="explain">Transforms the bottom line to complete the X shape with the top line.</div></div>
+
+<div class="line"><div class="code">.icon-btn.idle{animation:float 3500ms ease-in-out infinite}</div><div class="explain">Applying <code>.idle</code> to an icon button gives it a gentle float motion as an idle decorative effect; use sparingly to avoid distraction.</div></div>
+
+<div class="line"><div class="code">@media (prefers-reduced-motion:reduce){</div><div class="explain">Respects user preferences for reduced motion; disables animations/transitions below.</div></div>
+<div class="line"><div class="code">    .story-ring,.badge,.icon-btn,.profile-btn,.icon-btn.idle{animation:none!important;transition:none!important}</div><div class="explain">Explicitly disables animations/transitions for the listed classes when the user prefers reduced motion.
+</div></div>
+<div class="line"><div class="code">}</div><div class="explain">End reduced-motion overrides.</div></div>
+
+  </div>
+
+  <h2>File: assets/avatar.svg (annotated)</h2>
+  <div>
+<div class="line"><div class="code">&lt;svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="User avatar"&gt;</div><div class="explain">SVG root for a simple avatar image. <code>role="img"</code> with <code>aria-label</code> gives it an accessible description when used inline or as an <code>&lt;img&gt;</code> source.</div></div>
+<div class="line"><div class="code">  &lt;defs&gt;</div><div class="explain">Definitions block for gradients used inside the SVG.</div></div>
+<div class="line"><div class="code">    &lt;linearGradient id="g" x1="0" x2="1"&gt;</div><div class="explain">Defines gradient <code>g</code> used to paint the secondary rectangle background with a warm color shift.</div></div>
+<div class="line"><div class="code">      &lt;stop offset="0" stop-color="#ff5858"/&gt;</div><div class="explain">Gradient start color (warm pink).</div></div>
+<div class="line"><div class="code">      &lt;stop offset="1" stop-color="#f77b00"/&gt;</div><div class="explain">Gradient end color (orange), creating a lively look.</div></div>
+<div class="line"><div class="code">    &lt;/linearGradient&gt;</div><div class="explain">End gradient definition.</div></div>
+<div class="line"><div class="code">  &lt;/defs&gt;</div><div class="explain">Close defs.</div></div>
+<div class="line"><div class="code">  &lt;rect width="128" height="128" rx="20" fill="#111827" /&gt;</div><div class="explain">Dark rounded base square for contrast behind the gradient overlay; <code>rx</code> rounds corners.</div></div>
+<div class="line"><div class="code">  &lt;rect x="4" y="4" width="120" height="120" rx="16" fill="url(#g)" opacity="0.95" /&gt;</div><div class="explain">Inner rounded rectangle filled with the gradient to create a colorful plate inside the dark base. Slight opacity softens the effect.</div></div>
+<div class="line"><div class="code">  &lt;g transform="translate(32,28)" fill="#fff"&gt;</div><div class="explain">Group that positions the avatar head and shoulders; <code>fill="#fff"</code> makes these shapes white on top of the gradient.</div></div>
+<div class="line"><div class="code">    &lt;circle cx="32" cy="24" r="16" opacity="0.95" /&gt;</div><div class="explain">Represents a user's head; positioned within the group transform so coordinates are local to the group.</div></div>
+<div class="line"><div class="code">    &lt;path d="M8 86c8-14 24-22 40-22s32 8 40 22c0 0 0 6-6 6H14c-6 0-6-6-6-6z" fill="#ffffff" opacity="0.95"/&gt;</div><div class="explain">Simple path drawing the shoulders / torso silhouette under the head. Using a path provides a smooth organic shape that looks like an avatar silhouette.</div></div>
+<div class="line"><div class="code">  &lt;/g&gt;</div><div class="explain">Close group.</div></div>
+<div class="line"><div class="code">&lt;/svg&gt;</div><div class="explain">Close SVG root.</div></div>
+
+  <h2>What I generated and why</h2>
+  <p>I produced this single HTML document with per-line explanations so you can review the markup and styles, learn why each line exists, and see the accessibility, layout, and design considerations. It is structured for easy conversion to PDF via your browser's Print dialog.</p>
+
+  <h2>How to produce the downloadable PDF (detailed)</h2>
+  <ol>
+    <li>Open <code>code-explanation.html</code> in your browser (double-click or use <code>Invoke-Item</code> / <code>Start-Process</code> in PowerShell).</li>
+    <li>Use the browser menu: File &gt; Print &gt; Destination &gt; Save as PDF (or similar). Adjust margins and scale as desired. Save to a filename like <code>serene-navbar-explanation.pdf</code>.</li>
+    <li>Or from PowerShell with Edge/Chrome installed (example, adjust paths):
+      <pre>msedge --headless --disable-gpu --print-to-pdf="c:\Users\azuma\OneDrive\Documents\remfilez\serene-navbar-explanation.pdf" "file:///c:/Users/azuma/OneDrive/Documents/remfilez/code-explanation.html"</pre>
+      If <code>msedge</code> isn’t on your PATH, run from its installation directory or use Chrome with the same flags.
+    </li>
+    <li>If you have <code>wkhtmltopdf</code> installed you can run:
+      <pre>wkhtmltopdf code-explanation.html serene-navbar-explanation.pdf</pre>
+    </li>
+  </ol>
+
+  <h2>Next steps I can do for you</h2>
+  <ul>
+    <li>Run an automated PDF conversion in the workspace (requires a headless browser or wkhtmltopdf available in the environment).</li>
+    <li>Produce a shorter summary PDF or a printable handout version if you prefer fewer details and more visuals.</li>
+    <li>Embed live code samples or screenshots into the explanation before exporting to PDF.</li>
+  </ul>
+
+  <p>If you'd like, I can now try to generate the PDF automatically here — tell me if you want me to attempt a headless conversion and whether Edge/Chrome or <code>wkhtmltopdf</code> is available on your machine.</p>
+</body>
+</html>
